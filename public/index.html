@@ -2,18 +2,38 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" charset="UTF-8" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
   <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css"/>
-  <link rel="stylesheet" type="text/css" href="/styles/styles.css">
+  <!-- <link rel="stylesheet" href="/style.css"> -->
+  <!--   <link rel="stylesheet" type="text/css" href="/styles/styles.css"> -->
+
   <title>Gallery</title>
 </head>
 <body>
+
   <div id="gallery"></div>
+  <div id="details"></div>
+  <div id="similarExperience"></div>
+  <div id="itemreviews"></div>
+  <div id="app2"></div> <!-- Upcoming events -->
+
+
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script type="text/javascript" src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>
   <!-- <script type="text/javascript" src="https://unpkg.com/react-slick@0.13.6/dist/react-slick.min.js"></script> -->
   <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+  <!-- Reviews  <script src="http://localhost:3001/reviewsContent/bundle.js"></script>
+  Upcoming <script src="http://localhost:3002/bundle.js"></script>
+  Similar Listings <script src="http://localhost:3003/bundle.js"></script>   -->
   <script src="http://localhost:3004/app.js"></script>
+  <!-- Details service <script src="http://localhost:3005/bundle.js"></script> -->
 
 
   <script>
@@ -56,11 +76,46 @@
         ]       
       });
     });
+
+  setTimeout(function() {
+  console.log('I found Sl?ck slider');
+  $('.selected').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    fade: true,
+    dots: false,
+    centerMode: true,
+    asNavFor: '.slider-nav'
+  });
+
+  $('.slider-nav').slick({
+    asNavFor: '.selected',
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    dots: true,
+    // centerMode: false,
+    focusOnSelect: true,
+    // variableWidth: true,
+    infinite: true
+  });
+  },1);
+
+      ReactDOM.render(
+        React.createElement(Gallery),
+        document.getElementById('gallery')
+      );
     
-    ReactDOM.render(
-      React.createElement(Gallery),
-      document.getElementById('gallery')
-    );
+      // ReactDOM.render(
+      //   React.createElement(SimilarExperience, {pathname:'/id/1'}),
+      //   document.getElementById('simExp')
+      // );
+
+      // ReactDOM.render(
+      //   React.createElement(Reviews),
+      //   document.getElementById('itemreviews')
+      // );
+
   </script>
 
 </body>
