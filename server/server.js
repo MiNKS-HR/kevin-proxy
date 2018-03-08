@@ -8,19 +8,18 @@ const port = process.env.PORT || 3000;
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, '../public')));
 
-app.use('/similar', function(req,res) {
-  var newurl = 'http://localhost:3003/similar' + req.url;
+app.use('/reviews/', function(req,res) {
+  var newurl = 'http://localhost:3001/reviews' + req.url;
   request(newurl).pipe(res);
-});
-
-app.use('/details', function(req,res) {
-  var newurl = 'http://localhost:3005/details' + req.url;
-  request(newurl).pipe(res);
-  console.log(newurl);
 });
 
 app.use('/experience/availableDate/', function(req,res) {
   var newurl = 'http://localhost:3002/experience/availableDate' + req.url;
+  request(newurl).pipe(res);
+});
+
+app.use('/similar', function(req,res) {
+  var newurl = 'http://localhost:3003/similar' + req.url;
   request(newurl).pipe(res);
 });
 
@@ -34,9 +33,10 @@ app.use('/img/', function(req,res) {
   request(newurl).pipe(res);
 });
 
-app.use('/reviews/', function(req,res) {
-  var newurl = 'http://localhost:3001/reviews' + req.url;
+app.use('/details', function(req,res) {
+  var newurl = 'http://localhost:3005/details' + req.url;
   request(newurl).pipe(res);
+  console.log(newurl);
 });
 
 app.listen(port, () => {
