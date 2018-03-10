@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  photo-gallery:
+    build: modules/photo-gallery/
+    depends_on:
+      - 'database'
+    ports: 
+      - '3004:3004'
+
+  database:
+    image: mongo:3.6.2
